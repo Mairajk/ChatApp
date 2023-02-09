@@ -17,8 +17,8 @@ export const userModel = mongoose.model("Users", userSchema);
 /////////////////////////// post model and Schema //////////////////////////////////
 
 let messageSchema = new mongoose.Schema({
-  from: { type: String },
-  to: { type: String },
+  sender: { type: String },
+  send_To: { type: String },
   messageText: { type: String },
   date: { type: Date, default: Date.now },
   unread: { type: Boolean, default: true },

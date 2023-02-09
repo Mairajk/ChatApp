@@ -12,7 +12,12 @@ const router = express.Router();
 
 //===================================>> message get API <<===============================================
 
-router.get('/message', (req, res) => {
+router.get('/message/:user_id', async (req, res) => {
+
+    const id = req.body.token._id;
+    const userId = req.query.user_id;
+
+    const messages = await messageModel.find({})
 
 })
 
@@ -22,7 +27,21 @@ router.get('/message', (req, res) => {
 
 //===================================>> message send API <<===============================================
 
-router.post('/message', (req, res) => {
+router.post('/message', async (req, res) => {
+
+    if (!body.text || !body.sendTo) {
+
+        res.status("400").send({ message: "invalid input" })
+        return;
+    }
+
+    const sentMessage = await messageModel.create({
+        sender: req.body.token._id,
+        send_To: req.body.token._id,
+        text: req.body.text
+    });
+
+    res.status(200).send({ message: 'message sent successfully ' })
 
 })
 
@@ -32,7 +51,7 @@ router.post('/message', (req, res) => {
 
 //===================================>> message delete API <<===============================================
 
-router.delete('/message', (req, res) => {
+router.delete('/messages/:message_id', (req, res) => {
 
 })
 
