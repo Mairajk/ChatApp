@@ -7,7 +7,7 @@ const router = express.Router();
 
 //////////////////  SIGNUP API ////////////////////////////////////
 
-router.post("/api/v1/signup", (req, res) => {
+router.post("/signup", (req, res) => {
   let body = req.body;
 
   if (!body.firstName || !body.lastName || !body.email || !body.password) {
@@ -78,7 +78,7 @@ router.post("/api/v1/signup", (req, res) => {
 
 //////////////////  LOGIN API ////////////////////////////////////
 
-router.post("/api/v1/login", (req, res) => {
+router.post("/login", (req, res) => {
   let body = req.body;
   body.email = body.email.toLowerCase();
 
@@ -162,7 +162,7 @@ router.post("/api/v1/login", (req, res) => {
 
 //////////////////  LOGOUT API ////////////////////////////////////
 
-router.post("/api/v1/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   res.cookie("Token", "", {
     maxAge: 1,
     httpOnly: true,
@@ -176,7 +176,7 @@ router.post("/api/v1/logout", (req, res) => {
 
 //////////////////  find user for forget password API ////////////////////////////////////
 
-router.post("/api/v1/forget-password/find-account", async (req, res) => {
+router.post("/forget-password/find-account", async (req, res) => {
   try {
     const body = req.body;
     const email = body.email;

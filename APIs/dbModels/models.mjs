@@ -16,14 +16,15 @@ export const userModel = mongoose.model("Users", userSchema);
 
 /////////////////////////// post model and Schema //////////////////////////////////
 
-let postSchema = new mongoose.Schema({
-  userId: { type: String },
-  postText: { type: String },
-  postImage: { type: String },
+let messageSchema = new mongoose.Schema({
+  from: { type: String },
+  to: { type: String },
+  messageText: { type: String },
   date: { type: Date, default: Date.now },
+  unread: { type: Boolean, default: true },
 });
 
-export const postModel = mongoose.model("posts", postSchema);
+export const messageModel = mongoose.model("posts", messageSchema);
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -42,7 +43,7 @@ export const otpModel = mongoose.model("OTPs", otpSchema);
 
 const mongodbURI =
   process.env.mongodbURI ||
-  "mongodb+srv://MairajK:workhardin@cluster0.sihvwcq.mongodb.net/social-app?retryWrites=true&w=majority";
+  "mongodb+srv://MairajK:workhardin@cluster0.sihvwcq.mongodb.net/chat-app?retryWrites=true&w=majority";
 
 mongoose.connect(mongodbURI);
 
