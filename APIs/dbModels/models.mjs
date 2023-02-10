@@ -20,7 +20,7 @@ let messageSchema = new mongoose.Schema({
   sender: { type: String },
   send_To: { type: String },
   messageText: { type: String },
-  date: { type: Date, default: Date.now },
+  send_date: { type: Date, default: Date.now },
   unread: { type: Boolean, default: true },
 });
 

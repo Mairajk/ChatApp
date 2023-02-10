@@ -12,6 +12,7 @@ import { stringToHash, varifyHash } from "bcrypt-inzi";
 
 // import bucket from "./firebase/index.mjs";
 import authApis from "./APIs/auth.mjs";
+import chatApis from "./APIs/chat.mjs";
 
 // import { type } from "os";
 // import { fileURLToPath } from "url";
