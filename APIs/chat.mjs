@@ -74,7 +74,7 @@ router.post('/message', async (req, res) => {
         res.status(200).send({ message: 'message sent successfully ' });
 
     } catch (error) {
-        res.status(500).send({error}||{ message: 'Internal server error' })
+        res.status(500).send({ error } || { message: 'Internal server error' })
 
     }
 })
@@ -85,22 +85,22 @@ router.post('/message', async (req, res) => {
 
 //===================================>> message delete API <<===============================================
 
-router.delete('/messages/:message_id',async (req, res) => {
- try {
-    const messageId = req.params.message_id
-    if (!messageId) {
-        res.status(400).send({
-            message: 'forbidden',
-            devMessage: `reuired parameter is missing URL`
-        })
-        return;
+router.delete('/messages/:message_id', async (req, res) => {
+    try {
+        const messageId = req.params.message_id
+        if (!messageId) {
+            res.status(400).send({
+                message: 'forbidden',
+                devMessage: `reuired parameter is missing URL`
+            })
+            return;
+        }
+
+
+
+    } catch (error) {
+
     }
-
-
-
- } catch (error) {
-    
- }
 })
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
