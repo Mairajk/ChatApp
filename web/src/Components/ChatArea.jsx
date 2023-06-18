@@ -82,6 +82,7 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
                 placeholder="Type message here ..."
               ></input>
 
+{/* TODO style it and optimize the UI thenmove to server  */}
               <button type="submit" className="sendButton">
                 <SendIcon />
               </button>
