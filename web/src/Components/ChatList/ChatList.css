@@ -1,0 +1,161 @@
+/* body {
+  background: #222;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.searchForm input {
+  all: unset;
+  background-color: #333;
+  padding: 20px;
+  color: gainsboro;
+  border-radius: 50px;
+  width: 70%;
+}
+
+.chatList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eachChat {
+  display: flex;
+  margin: 20px auto;
+  background-color: #111;
+  padding: 15px 10px;
+  color: gainsboro;
+  width: 90%;
+  border-radius: 20px;
+}
+
+.eachChat img {
+  width: 62.44px;
+  border-radius: 100%;
+  margin: 0px 20px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Home Page Styles */
+h1 {
+  color: #128c7e;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #555;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  color: #fff;
+  background-color: #128c7e;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #128c7e;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0a6f61;
+}
+
+/* Responsive Styles */
+
+/* Mobile Styles */
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  li {
+    padding: 10px;
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    padding: 40px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  li {
+    padding: 14px;
+  }
+}
+
+/* Laptop Styles */
+@media only screen and (min-width: 1025px) {
+  .container {
+    padding: 80px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  li {
+    padding: 16px;
+  }
+}

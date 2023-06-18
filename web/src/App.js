@@ -1,9 +1,10 @@
-import ChatList from "./Components/ChatApp/ChatList";
+import Home from "./pages/Home";
+
 
 function App() {
   return (
     <div className="App">
-      <ChatList />
+      <Home />
     </div>
   );
 }
