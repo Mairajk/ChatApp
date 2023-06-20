@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import SendIcon from '@mui/icons-material/Send';
+import {SendIcon , KeyboardArrowRightIcon} from '@mui/icons-material/';
+
 
 /** import helpers */
 import { sendMessage } from "../Helpers/sendMessage";
@@ -73,18 +74,20 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
 
           <div className="messageSenderDiv">
             <form action="" className="messageForm" onSubmit={senderHandler}>
-              <input
+<i> <KeyboardArrowRightIcon/></i>
+
+              <textarea
                 autoFocus
                 className="messageInput"
                 name=""
                 id=""
                 ref={messageText}
                 placeholder="Type message here ..."
-              ></input>
+              ></textarea>
 
 {/* TODO style it and optimize the UI thenmove to server  */}
               <button type="submit" className="sendButton">
-                <SendIcon />
+                <SendIcon   style={{ fontSize: '2.5rem' }} />
               </button>
             </form>
           </div>

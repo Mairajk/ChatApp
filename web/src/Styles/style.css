@@ -141,13 +141,24 @@ body {
 }
 
 .chat-area .messageSenderDiv .messageForm .messageInput {
-  width: 90%;
-  padding: 20px 15px;
+  width: 95%;
+  padding:  1rem 4.5rem ;
   font-size: 1rem;
   outline: none;
   border: 0px;
   background-color: lightgray;
   border-radius: 10px;
+  resize: none;
+}
+
+.chat-area .messageSenderDiv .messageForm .sendButton {
+  all: unset;
+  cursor: pointer;
+  color: #0a6f61;
+  position: fixed;
+  right: 3.5rem;
+  bottom: 1.5rem;
+  font-size: 3rem;
 }
 
 .chat-header {
