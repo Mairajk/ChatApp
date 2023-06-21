@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import {SendIcon , KeyboardArrowRightIcon} from '@mui/icons-material/';
-
+import { Send, KeyboardArrowRight } from "@mui/icons-material";
+// import SendIcon from "@mui/icons-material/Send";
 
 /** import helpers */
 import { sendMessage } from "../Helpers/sendMessage";
@@ -11,6 +11,7 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
   const myId = 9;
 
   const messageText = useRef("");
+  const [isMenueOpen , menueOpen] = useState(false)
 
   const [messages, setMessages] = useState([
     { id: 1, text: "Hey, how are you?", chatId: 1, from: 9, to: 5 },
@@ -31,6 +32,10 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
   useEffect(() => {
     findChat();
   }, [selectedChatId]);
+
+  const menueHandler = () => {
+
+  };
 
   const senderHandler = async (event) => {
     await event.preventDefault();
@@ -74,7 +79,9 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
 
           <div className="messageSenderDiv">
             <form action="" className="messageForm" onSubmit={senderHandler}>
-<i> <KeyboardArrowRightIcon/></i>
+              <i className="arrowIcon" onClick={menueHandler}>
+                <KeyboardArrowRight style={{ fontSize: "2.5rem" }} />
+              </i>
 
               <textarea
                 autoFocus
@@ -85,9 +92,9 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
                 placeholder="Type message here ..."
               ></textarea>
 
-{/* TODO style it and optimize the UI thenmove to server  */}
+              {/* TODO toggle button and add action menue of inputs then move to server  */}
               <button type="submit" className="sendButton">
-                <SendIcon   style={{ fontSize: '2.5rem' }} />
+                <Send style={{ fontSize: "2.5rem" }} />
               </button>
             </form>
           </div>

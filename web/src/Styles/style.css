@@ -137,12 +137,12 @@ body {
 .chat-area .messageSenderDiv .messageForm {
   /* width: 80%; */
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .chat-area .messageSenderDiv .messageForm .messageInput {
-  width: 95%;
-  padding:  1rem 4.5rem ;
+  width: 100%;
+  padding:  1rem 4rem 1rem 2.5rem;
   font-size: 1rem;
   outline: none;
   border: 0px;
@@ -155,9 +155,16 @@ body {
   all: unset;
   cursor: pointer;
   color: #0a6f61;
-  position: fixed;
-  right: 3.5rem;
-  bottom: 1.5rem;
+  position: relative;
+  right: 3rem;
+}
+
+.chat-area .messageSenderDiv .messageForm .arrowIcon{
+  cursor: pointer;
+  color: #777;
+  position: relative;
+  left: 2.25rem;
+  align-self: center;
   font-size: 3rem;
 }
 
