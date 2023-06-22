@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Send, KeyboardArrowRight } from "@mui/icons-material";
+import {
+  Send,
+  KeyboardArrowRight,
+  KeyboardArrowDown,
+} from "@mui/icons-material";
 // import SendIcon from "@mui/icons-material/Send";
 
 /** import helpers */
@@ -11,7 +15,7 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
   const myId = 9;
 
   const messageText = useRef("");
-  const [isMenueOpen , menueOpen] = useState(false)
+  const [isMenueOpen, setIsMenueOpen] = useState(false);
 
   const [messages, setMessages] = useState([
     { id: 1, text: "Hey, how are you?", chatId: 1, from: 9, to: 5 },
@@ -34,7 +38,7 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
   }, [selectedChatId]);
 
   const menueHandler = () => {
-
+    setIsMenueOpen(isMenueOpen);
   };
 
   const senderHandler = async (event) => {
@@ -80,7 +84,11 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
           <div className="messageSenderDiv">
             <form action="" className="messageForm" onSubmit={senderHandler}>
               <i className="arrowIcon" onClick={menueHandler}>
-                <KeyboardArrowRight style={{ fontSize: "2.5rem" }} />
+                {isMenueOpen ? (
+                  <KeyboardArrowDown style={{ fontSize: "2.5rem" }} />
+                ) : (
+                  <KeyboardArrowRight style={{ fontSize: "2.5rem" }} />
+                )}
               </i>
 
               <textarea
