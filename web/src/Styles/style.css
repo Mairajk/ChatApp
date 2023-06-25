@@ -133,6 +133,7 @@ body {
   width: 70%;
   /* margin: 0 auto; */
   display: flex;
+  border: 10px;
 }
 
 .chat-area .messageSenderDiv .messageForm {
@@ -143,13 +144,15 @@ body {
 }
 
 .chat-area .messageSenderDiv .messageForm .messageInput {
+  padding: 1rem 4rem 1rem 2.5rem;
+  /* outline: none; */
   /* width: 100%;
   margin: 0 auto;
-  padding: 1rem 4rem 1rem 2.5rem;
   font-size: 1rem;
-  outline: none;
-  border: 0px;*/
+  */
+
   background-color: lightgray;
+  box-shadow: none;
   /* border-radius: 10px; */
   /* resize: none;  */
 }
@@ -171,7 +174,7 @@ body {
   color: #777;
   position: fixed;
   align-self: center;
-  padding-left:0.3rem ;
+  padding-left: 0.3rem;
 }
 
 .chat-area .messageSenderDiv .attachment-i .attachmentIcon {

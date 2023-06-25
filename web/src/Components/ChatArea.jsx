@@ -62,20 +62,6 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
     }
   };
 
-  // const inputKeyHandler = (event) => {
-  //   const messageForm = document.querySelector("#messageForm");
-  //   if (event.ctrlKey && event.key === "Enter") {
-  //     /**  Insert line break */
-  //     messageText.current.value += "\n";
-  //   } else if (event.key === "Enter") {
-  //     event.preventDefault(); // Prevent the default Enter key behavior
-  //     messageForm.submit();
-  //     // .preventDefault();
-  //   }
-  // };
-
-  // messageForm.addEventListener("submit", senderHandler);
-
   console.log("selectedChat --------->", selectedChat);
 
   return (
@@ -114,17 +100,21 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
 
               <TextField
                 autoFocus
+                variant="standard"
                 className="messageInput"
                 name=""
-                id=""
+                id="outlined-textarea"
                 inputRef={messageText}
-                fullWidth={true}
-                multiline={true}
+                maxRows={4}
+                fullWidth
+                multiline
                 placeholder="Type message here ..."
-                // onKeyDown={inputKeyHandler}
+                InputProps={{
+                  disableUnderline: true,
+                }}
               ></TextField>
 
-              {/* TODO toggle button and add action menue of inputs then move to server  */}
+              {/* TODO optimize input border and attachment icon posotion and set data prperly and create store "context or redux"  */}
               <button type="submit" className="sendButton">
                 <Send className="sendIcon" />
               </button>
