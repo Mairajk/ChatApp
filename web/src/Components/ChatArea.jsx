@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   Send,
-  KeyboardArrowRight,
-  KeyboardArrowDown,
+  // KeyboardArrowRight,
+  // KeyboardArrowDown,
+  Attachment,
 } from "@mui/icons-material";
 // import SendIcon from "@mui/icons-material/Send";
 
 /** import helpers */
 import { sendMessage } from "../Helpers/sendMessage";
+import { TextField } from "@mui/material";
 
 const ChatArea = ({ selectedChatId, handleCloseChat }) => {
   console.log("selectedChatId --------->", selectedChatId);
@@ -38,14 +40,18 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
   }, [selectedChatId]);
 
   const menueHandler = () => {
-    setIsMenueOpen(isMenueOpen);
+    setIsMenueOpen(!isMenueOpen);
+    console.log("isMenueOpen ------------------>", isMenueOpen);
   };
 
   const senderHandler = async (event) => {
-    await event.preventDefault();
+    event.preventDefault();
+
+    console.log("senderHandler event --------------------->", event);
+
     try {
       await sendMessage({
-        messageText,
+        messageText: messageText.current.value,
         sendTo: 5,
         chatId: 1,
         messages,
@@ -55,6 +61,20 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
       console.log("senderHandler Error ------------------>", error);
     }
   };
+
+  // const inputKeyHandler = (event) => {
+  //   const messageForm = document.querySelector("#messageForm");
+  //   if (event.ctrlKey && event.key === "Enter") {
+  //     /**  Insert line break */
+  //     messageText.current.value += "\n";
+  //   } else if (event.key === "Enter") {
+  //     event.preventDefault(); // Prevent the default Enter key behavior
+  //     messageForm.submit();
+  //     // .preventDefault();
+  //   }
+  // };
+
+  // messageForm.addEventListener("submit", senderHandler);
 
   console.log("selectedChat --------->", selectedChat);
 
@@ -82,27 +102,31 @@ const ChatArea = ({ selectedChatId, handleCloseChat }) => {
           </div>
 
           <div className="messageSenderDiv">
-            <form action="" className="messageForm" onSubmit={senderHandler}>
-              <i className="arrowIcon" onClick={menueHandler}>
-                {isMenueOpen ? (
-                  <KeyboardArrowDown style={{ fontSize: "2.5rem" }} />
-                ) : (
-                  <KeyboardArrowRight style={{ fontSize: "2.5rem" }} />
-                )}
+            <form
+              action=""
+              id="messageForm"
+              className="messageForm"
+              onSubmit={senderHandler}
+            >
+              <i className="attachment-i" onClick={menueHandler}>
+                <Attachment className="attachmentIcon" style={{}} />
               </i>
 
-              <textarea
+              <TextField
                 autoFocus
                 className="messageInput"
                 name=""
                 id=""
-                ref={messageText}
+                inputRef={messageText}
+                fullWidth={true}
+                multiline={true}
                 placeholder="Type message here ..."
-              ></textarea>
+                // onKeyDown={inputKeyHandler}
+              ></TextField>
 
               {/* TODO toggle button and add action menue of inputs then move to server  */}
               <button type="submit" className="sendButton">
-                <Send style={{ fontSize: "2.5rem" }} />
+                <Send className="sendIcon" />
               </button>
             </form>
           </div>

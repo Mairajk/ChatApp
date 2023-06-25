@@ -128,27 +128,30 @@ body {
 .chat-area .messageSenderDiv {
   position: fixed;
   bottom: 0;
-  right: 20;
+  /* right: 20; */
   padding-bottom: 20px;
   width: 70%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  display: flex;
 }
 
 .chat-area .messageSenderDiv .messageForm {
-  /* width: 80%; */
+  width: 100%;
+  position: relative;
   display: flex;
-  /* justify-content: space-around; */
+  margin-left: 0px auto;
 }
 
 .chat-area .messageSenderDiv .messageForm .messageInput {
-  width: 100%;
-  padding:  1rem 4rem 1rem 2.5rem;
+  /* width: 100%;
+  margin: 0 auto;
+  padding: 1rem 4rem 1rem 2.5rem;
   font-size: 1rem;
   outline: none;
-  border: 0px;
+  border: 0px;*/
   background-color: lightgray;
-  border-radius: 10px;
-  resize: none;
+  /* border-radius: 10px; */
+  /* resize: none;  */
 }
 
 .chat-area .messageSenderDiv .messageForm .sendButton {
@@ -159,15 +162,22 @@ body {
   right: 3rem;
 }
 
-.chat-area .messageSenderDiv .messageForm .arrowIcon{
-  cursor: pointer;
-  color: #777;
-  position: relative;
-  left: 2.25rem;
-  align-self: center;
-  font-size: 3rem;
+.chat-area .messageSenderDiv .messageForm .sendButton .sendIcon {
+  font-size: 2rem;
 }
 
+.chat-area .messageSenderDiv .attachment-i {
+  cursor: pointer;
+  color: #777;
+  position: fixed;
+  align-self: center;
+  padding-left:0.3rem ;
+}
+
+.chat-area .messageSenderDiv .attachment-i .attachmentIcon {
+  transform: rotate(120deg);
+  font-size: 2rem;
+}
 .chat-header {
   display: flex;
   align-items: center;
