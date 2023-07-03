@@ -62,7 +62,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.chat-list li:is(:hover) {
+.chat-list li:hover {
   background-color: #0a6f61;
 }
 
