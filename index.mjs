@@ -1,8 +1,8 @@
 ////===============>> starting  <<=============\\\\
 
-import express from "express";
 import cors from "cors";
 import path from "path";
+import express from "express";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import { stringToHash, varifyHash } from "bcrypt-inzi";
@@ -12,7 +12,7 @@ import { stringToHash, varifyHash } from "bcrypt-inzi";
 
 // import bucket from "./firebase/index.mjs";
 import authApis from "./APIs/auth.mjs";
-import chatApis from "./APIs/chat.mjs";
+import Apis from "./APIs/chat.mjs";
 
 // import { type } from "os";
 // import { fileURLToPath } from "url";
@@ -34,7 +34,7 @@ app.use(
 );
 
 
-app.use('/api/v1', authApis)
+app.use('/auth/api/v1', authApis)
 
 
 app.use("/api/v1", (req, res, next) => {
@@ -73,7 +73,7 @@ app.use("/api/v1", (req, res, next) => {
 });
 
 
-app.use('/api/v1', chatApis)
+app.use('/api/v1', Apis)
 
 
 

@@ -2,42 +2,15 @@ import mongoose from "mongoose";
 
 ///////////////////////////////// USER schema and model ////////////////////////
 
-const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
-  age: { type: String },
-  profilePhoto: { type: String },
-  contact: { type: String },
-});
 
-export const userModel = mongoose.model("Users", userSchema);
 
 /////////////////////////// post model and Schema //////////////////////////////////
 
-let messageSchema = new mongoose.Schema({
-  sender: { type: String },
-  send_To: { type: String },
-  messageText: { type: String },
-  send_date: { type: Date, default: Date.now },
-  unread: { type: Boolean, default: true },
-});
-
-export const messageModel = mongoose.model("posts", messageSchema);
 
 //////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////// OTP model and Schema //////////////////////////////////
 
-let otpSchema = new mongoose.Schema({
-  email: { type: String, required: true },
-  otp: { type: String, required: true },
-  isUsed: { type: Boolean, default: false },
-  createdOn: { type: Date, default: Date.now },
-});
-
-export const otpModel = mongoose.model("OTPs", otpSchema);
 
 //////////////////////////////////////////////////////////////////////////////
 
