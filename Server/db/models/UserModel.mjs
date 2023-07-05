@@ -3,13 +3,13 @@ import mongoose from "mongoose";
 
 
 const userSchema = new mongoose.Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+    age: { type: String },
+    phoneNumber: { type: String },
+    profilePhoto: { type: String },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    age: { type: String },
-    profilePhoto: { type: String },
-    phoneNumber: { type: String },
+    lastName: { type: String, required: true },
+    firstName: { type: String, required: true },
 });
 
 export default mongoose.model("users", userSchema);
