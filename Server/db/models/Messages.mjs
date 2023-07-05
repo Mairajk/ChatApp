@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 
 
 const messageSchema = new mongoose.Schema({
-    sender: { type: String },
-    send_To: { type: String },
     messageText: { type: String },
-    send_date: { type: Date, default: Date.now },
-    unread: { type: Boolean, default: true },
+    sender: { type: String, required: true },
+    send_To: { type: String, required: true },
+    isUnread: { type: Boolean, default: true, required: true },
+    send_date: { type: Date, default: Date.now, required: true },
+    chatId: { type: mongoose.ObjectId, ref: 'chats', required: true },
 });
 
-export default mongoose.model("posts", messageSchema);
+export default mongoose.model("messages", messageSchema);
