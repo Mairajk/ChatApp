@@ -11,8 +11,11 @@ import { stringToHash, varifyHash } from "bcrypt-inzi";
 // import fs from "fs";
 
 // import bucket from "./firebase/index.mjs";
-import authApis from "./APIs/auth.mjs";
-import Apis from "./APIs/chat.mjs";
+import authApis from "./Server/Routes/auth.mjs";
+import Apis from "./Server/Routes/apis.mjs";
+
+/** import middlewares */
+import Authenticate from './Server/Middlewares/authenticate.mjs'
 
 // import { type } from "os";
 // import { fileURLToPath } from "url";
@@ -38,38 +41,7 @@ app.use('/auth/api/v1', authApis)
 
 
 app.use("/api/v1", (req, res, next) => {
-  console.log("req.cookies: ", req.cookies);
-
-  if (!req?.cookies?.Token) {
-    res.status(401).send({
-      message: "include http-only credentials with every request",
-    });
-    return;
-  }
-
-  jwt.verify(req.cookies.Token, SECRET, (err, decodedData) => {
-    if (!err) {
-      console.log("decodedData: ", decodedData);
-
-      const nowDate = new Date().getTime() / 1000;
-
-      if (decodedData.exp < nowDate) {
-        res.status(401);
-        res.cookie("Token", "", {
-          maxAge: 1,
-          httpOnly: true,
-        });
-        res.send({ message: "token expired" });
-      } else {
-        console.log("token approved");
-
-        req.body.token = decodedData;
-        next();
-      }
-    } else {
-      res.status(401).send("invalid token");
-    }
-  });
+  Authenticate()
 });
 
 

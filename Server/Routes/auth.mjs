@@ -1,5 +1,5 @@
-import { userModel } from "./dbModels/models.mjs";
 import express from "express";
+import UserModel from "../db/models/UserModel.mjs";
 import { stringToHash, varifyHash } from "bcrypt-inzi";
 import jwt from "jsonwebtoken";
 
@@ -25,7 +25,7 @@ router.post("/signup", (req, res) => {
 
   req.body.email = req.body.email.toLowerCase();
 
-  userModel.findOne({ email: body.email }, (err, user) => {
+  UserModel.findOne({ email: body.email }, (err, user) => {
     if (!err) {
       console.log("user ===> ", user);
 
@@ -38,7 +38,7 @@ router.post("/signup", (req, res) => {
         return;
       } else {
         stringToHash(body.password).then((hashedPassword) => {
-          userModel.create(
+          UserModel.create(
             {
               firstName: body.firstName,
               lastName: body.lastName,
@@ -94,7 +94,7 @@ router.post("/login", (req, res) => {
     return;
   }
 
-  userModel.findOne(
+  UserModel.findOne(
     { email: body.email },
     "email password firstName lastName",
     (err, user) => {
@@ -188,7 +188,7 @@ router.post("/forget-password/find-account", async (req, res) => {
       return;
     }
 
-    const user = await userModel
+    const user = await UserModel
       .findOne({ email: email }, "firstName lastName email")
       .exec();
 
