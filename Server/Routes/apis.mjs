@@ -2,10 +2,9 @@
 import express from 'express';
 
 
-/** import controllers */
-import sendMessage from '../Controllers/Messages/sendMessage.mjs';
-import deleteMesseges from '../Controllers/Messages/deleteMesseges.mjs';
-import getChatMessages from '../Controllers/Messages/getChatMessages.mjs';
+/** import APIs */
+import MessageRoutes from './'
+
 
 
 
@@ -16,7 +15,7 @@ const router = express.Router();
 
 /** ===================================>> message delete API <<=============================================== */
 
-router.get('/messages/chat/:id', getChatMessages)
+router.use('/message', MessageRoutes)
 
 /** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
