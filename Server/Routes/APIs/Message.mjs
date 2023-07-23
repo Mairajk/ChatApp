@@ -12,11 +12,12 @@ import getChatMessages from '../../Controllers/Messages/getChatMessages.mjs';
 
 const router = express.Router();
 
+console.log('---------------- in message Routes ------------------');
 
 
 /** ===================================>> message delete API <<=============================================== */
 
-router.get('/chat/:id', getChatMessages)
+router.get('/', getChatMessages)
 
 /** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 

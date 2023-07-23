@@ -3,17 +3,16 @@ import express from 'express';
 
 
 /** import APIs */
-import MessageRoutes from './'
-
-
+import MessageRoutes from './APIs/Message.mjs'
 
 
 
 const router = express.Router();
 
 
+console.log('---------------- in APIs ------------------');
 
-/** ===================================>> message delete API <<=============================================== */
+/** ===================================>> message APIs <<=============================================== */
 
 router.use('/message', MessageRoutes)
 
@@ -23,7 +22,7 @@ router.use('/message', MessageRoutes)
 
 /** ===================================>> message delete API <<=============================================== */
 
-router.post('/message', sendMessage)
+// app.use('/message', MessageRoutes)
 
 /** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
@@ -31,7 +30,7 @@ router.post('/message', sendMessage)
 
 /** ===================================>> message delete API <<=============================================== */
 
-router.delete('/messages/:id', deleteMesseges)
+// app.use('/message', MessageRoutes)
 
 /** >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 

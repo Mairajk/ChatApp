@@ -29,20 +29,20 @@ const port = process.env.PORT || 5001;
 // app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "*"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000", "*"],
+//     credentials: true,
+//   })
+// );
 
 
 app.use('/auth/api/v1', authApis)
 
 
-app.use("/api/v1", (req, res, next) => {
-  Authenticate()
-});
+// app.use("/api/v1", (req, res, next) => {
+//    Authenti cate()
+// });
 
 
 app.use('/api/v1', Apis)
