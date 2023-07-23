@@ -1,37 +1,31 @@
-import express from "express";
-import UserModel from "../db/models/UserModel.mjs";
-import { stringToHash, varifyHash } from "bcrypt-inzi";
-import jwt from "jsonwebtoken";
+import express from 'express';
+
+/** Import controllers */
+import login from '../Controllers/auths/login.mjs';
+import signup from '../Controllers/auths/signup.mjs';
+import logout from '../Controllers/auths/logout.mjs';
+import forgetPassword from '../Controllers/auths/forget-password.mjs';
 
 const router = express.Router();
 
 //////////////////  SIGNUP API ////////////////////////////////////
 
-router.post("/signup");
+router.post('/signup', signup);
 //////////////////////////////////////////////////////////////////
 
 //////////////////  LOGIN API ////////////////////////////////////
 
-router.post("/login");
+router.post('/login', login);
 ///////////////////////////////////////////////////////////////////
 
 //////////////////  LOGOUT API ////////////////////////////////////
 
-router.post("/logout", (req, res) => {
-  res.cookie("Token", "", {
-    maxAge: 1,
-    httpOnly: true,
-  });
-
-  res.send({
-    message: "Logout successfully",
-  });
-});
+router.post('/logout', logout);
 ///////////////////////////////////////////////////////////////////
 
 //////////////////  find user for forget password API ////////////////////////////////////
 
-router.post("/forget-password/find-account");
+router.post('/forget-password/find-account', forgetPassword);
 ///////////////////////////////////////////////////////////////////
 
 ///////////////////////////*******************////////////////////////////////////////

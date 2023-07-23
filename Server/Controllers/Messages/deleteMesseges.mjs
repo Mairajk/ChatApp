@@ -1,16 +1,16 @@
 /** import models */
-import MessageModel from '../../db/models/Messages.mjs'
+// import MessageModel from '../../db/models/Messages.mjs';
 
 
 
 export default async (req, res) => {
     try {
-        const messageId = req.params.message_id
+        const messageId = req.params.message_id;
         if (!messageId) {
             res.status(400).send({
                 message: 'forbidden',
-                devMessage: `reuired parameter is missing URL`
-            })
+                devMessage: 'reuired parameter is missing URL'
+            });
             return;
         }
 
@@ -21,4 +21,4 @@ export default async (req, res) => {
         console.log('Error ------------------>', error);
 
     }
-}
+};

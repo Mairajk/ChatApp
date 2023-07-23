@@ -1,5 +1,5 @@
 /** import models */
-import MessageModel from '../../db/models/Messages.mjs'
+// import MessageModel from '../../db/models/Messages.mjs';
 
 
 export default async (req, res) => {
@@ -8,7 +8,7 @@ export default async (req, res) => {
 
         console.log('------------- in controller -------------');
 
-        const { query: { userId } } = req
+        // const { query: { userId } } = req;
 
         // consy
 
@@ -35,13 +35,13 @@ export default async (req, res) => {
         res.status(200).send({
             message: 'no message found',
             data: null
-        })
+        });
 
 
     } catch (error) {
 
         console.log('error --------------->', error);
 
-        res.status(500).send({ message: 'Internal server error' })
+        res.status(500).send({ message: 'Internal server error' });
     }
 };

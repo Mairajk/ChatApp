@@ -1,83 +1,80 @@
 
+import jwt from 'jsonwebtoken';
+import { varifyHash } from 'bcrypt-inzi';
+
+/** import models */
+import UserModel from '../../db/models/UserModel.mjs';
+
 /** @description: This is Login controller. */
+export default async (req, res) => {
 
-export default (req, res) => {
-    let body = req.body;
-    body.email = body.email.toLowerCase();
+    const SECRET = process.env.SECRET || 'secuirity';
 
-    if (!body.password || !body.email) {
-        res.status(400).send({
-            message: `some thing is missing in required fields `,
-            example: `here is a request example :
-                 {
-                    email: "abc@123.com",
-                    password: "*******"
-                 } `,
-        });
-        return;
-    }
+    try {
+        const { body: { password } } = req;
+        let { body: { email } } = req;
+        email = email.toLowerCase();
 
-    UserModel.findOne(
-        { email: body.email },
-        "email password firstName lastName",
-        (err, user) => {
-            if (!err) {
-                console.log("user ===> ", user);
-
-                if (user) {
-                    varifyHash(body.password, user.password).then((isMatch) => {
-                        console.log("isMatch ===>", isMatch);
-                        if (isMatch) {
-                            const token = jwt.sign(
-                                {
-                                    id: user._id,
-                                    email: body.email,
-                                    iat: Math.floor(Date.now() / 1000) - 30,
-                                    exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
-                                },
-                                SECRET
-                            );
-
-                            console.log("token ===> ", token);
-
-                            res.cookie("Token", token, {
-                                maxAge: 86_400_000,
-                                httpOnly: true,
-                            });
-
-                            res.send({
-                                message: "logedin successfully",
-                                userProfile: {
-                                    firstName: user.firstName,
-                                    lastName: user.lastName,
-                                    email: user.email,
-                                    _id: user._id,
-                                },
-                            });
-                            return;
-                        } else {
-                            console.log("password did not match");
-                            res.status(401).send({
-                                message: "wrong password",
-                            });
-                            return;
-                        }
-                    });
-                } else {
-                    console.log("user not found");
-
-                    res.status(401).send({
-                        message: "incorrect email user does not exist",
-                    });
-                    return;
-                }
-            } else {
-                console.log("server error ===>", err);
-                res.status(500).send({
-                    message: "login failed, please try again later",
-                });
-                return;
-            }
+        if (!password || !email) {
+            res.status(400).send({
+                message: 'some thing is missing in required fields ',
+                example: `here is a request example :
+                     {
+                        email: "abc@123.com",
+                        password: "*******"
+                     } `,
+            });
         }
-    );
-}
+
+        const user = await UserModel.findOne({ email }, 'email password firstName lastName');
+
+        if (!user) {
+            res.status(404).send({
+                message: 'User with this email doest not exist!'
+            });
+        }
+
+        const isMatch = await varifyHash(password, user.password);
+
+        console.log('isMatch ===>', isMatch);
+
+        if (!isMatch) {
+            res.status(403).send({
+                message: 'Incorrect password!'
+            });
+        }
+
+        const token = await jwt.sign(
+            {
+                id: user._id,
+                email: email,
+                iat: Math.floor(Date.now() / 1000) - 30,
+                exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+            },
+            SECRET
+        );
+
+        console.log('token ===> ', token);
+
+        res.cookie('Token', token, {
+            maxAge: 86_400_000,
+            httpOnly: true,
+        });
+
+        res.json({
+            message: 'log in successfull.',
+            userProfile: {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                _id: user._id,
+            },
+        });
+
+    } catch (error) {
+        console.log('server error ===>', error);
+        res.status(500).send({
+            message: 'login failed, please try again later',
+        });
+    }
+};
